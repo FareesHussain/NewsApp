@@ -8,18 +8,22 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import farees.hussain.newsapp.R
 import farees.hussain.newsapp.databinding.FragmentSavedNewsBinding
+import farees.hussain.newsapp.ui.activities.NewsActivity
+import farees.hussain.newsapp.ui.activities.NewsViewModel
 
 
 class SavedNewsFragment : Fragment() {
 
     private lateinit var binding : FragmentSavedNewsBinding
+    private lateinit var viewModel : NewsViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_saved_news,container,false)
-
+        viewModel = (activity as NewsActivity).viewModel
 
 
         return binding.root
