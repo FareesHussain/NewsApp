@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    app:startDestination="@id/breakingNewsFragment">
+
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="farees.hussain.newsapp.ui.fragments.ArticleFragment"
+        android:label="ArticleFragment" />
+    <fragment
+        android:id="@+id/breakingNewsFragment"
+        android:name="farees.hussain.newsapp.ui.fragments.BreakingNewsFragment"
+        android:label="BreakingNewsFragment" >
+        <action
+            android:id="@+id/action_breakingNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchNewsFragment"
+        android:name="farees.hussain.newsapp.ui.fragments.SearchNewsFragment"
+        android:label="SearchNewsFragment" >
+        <action
+            android:id="@+id/action_searchNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedNewsFragment"
+        android:name="farees.hussain.newsapp.ui.fragments.SavedNewsFragment"
+        android:label="SavedNewsFragment" >
+        <action
+            android:id="@+id/action_savedNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+</navigation>
