@@ -24,11 +24,11 @@ interface NewsApi {
     @GET("v2/top-headlines")
     suspend fun searchForNews(
         @Query("q")
-        searchQuery :String = "in",
+        searchQuery :String = "",
         @Query("page")
         pageNumber : Int = 1,
-        @Query("country")
-        countryCode :String = "in",
+//        @Query("country")
+//        countryCode :String = "in",
 //        @Query("category")
 //        type :String = "entertainment",
         @Query("pageSize")

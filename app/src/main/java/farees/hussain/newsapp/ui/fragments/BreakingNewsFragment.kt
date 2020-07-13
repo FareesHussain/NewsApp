@@ -1,13 +1,17 @@
 package farees.hussain.newsapp.ui.fragments
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import android.widget.SearchView
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import farees.hussain.newsapp.R
 import farees.hussain.newsapp.adapter.NewsAdapter
@@ -30,6 +34,7 @@ class BreakingNewsFragment : Fragment() {
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_breaking_news,container,false)
         viewModel = (activity as NewsActivity).viewModel
         setupRecyclerView()
+        setHasOptionsMenu(true)
 
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
             when(response){
@@ -48,11 +53,9 @@ class BreakingNewsFragment : Fragment() {
                 is Resource.Loading -> {
                     showProgressBar()
                 }
-
             }
 
         })
-
         return binding.root
     }
     private fun setupRecyclerView(){
@@ -72,6 +75,25 @@ class BreakingNewsFragment : Fragment() {
         binding.rvBreakingNews.visibility = View.GONE
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu,menu)
+        val sv = menu.findItem(R.id.search).actionView as androidx.appcompat.widget.SearchView
+        sv.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchNews(query!!)
+                return false
+            }
 
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun searchNews(query:String){
+        viewModel.searchNews(query)
+        findNavController().navigate(BreakingNewsFragmentDirections.actionBreakingNewsFragmentToSearchNewsFragment())
+    }
 
 }
