@@ -35,6 +35,9 @@ class BreakingNewsFragment : Fragment() {
         viewModel = (activity as NewsActivity).viewModel
         setupRecyclerView()
         setHasOptionsMenu(true)
+        newsAdapter.setOnItemClickListener {article ->
+            findNavController().navigate(BreakingNewsFragmentDirections.actionBreakingNewsFragmentToArticleFragment(article))
+        }
 
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
             when(response){

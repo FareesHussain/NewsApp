@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import farees.hussain.newsapp.R
 import farees.hussain.newsapp.adapter.NewsAdapter
@@ -32,6 +33,9 @@ class SearchNewsFragment : Fragment() {
         viewModel = (activity as NewsActivity).viewModel
         setHasOptionsMenu(true)
         newsAdapter = NewsAdapter()
+        newsAdapter.setOnItemClickListener { article ->
+            findNavController().navigate(SearchNewsFragmentDirections.actionSearchNewsFragmentToArticleFragment(article))
+        }
 
         viewModel.searchNews.observe(viewLifecycleOwner, Observer { response ->
             when(response){
