@@ -58,7 +58,7 @@ class BreakingNewsFragment : Fragment() {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let {message ->
-                        Log.d(TAG,"An Error occured : $message")
+                        Toast.makeText(this.activity,message,Toast.LENGTH_SHORT).show()
                     }
                 }
                 is Resource.Loading -> {

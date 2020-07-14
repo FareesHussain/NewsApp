@@ -31,7 +31,7 @@ class NewsActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.navView, NavController)
 
         val newsRepository = NewsRepository(ArticleDataBase(this))
-        val viewModelFactory = NewsViewModelFactory(newsRepository)
+        val viewModelFactory = NewsViewModelFactory(application,newsRepository)
         viewModel = ViewModelProvider(this,viewModelFactory).get(NewsViewModel::class.java)
 
 
