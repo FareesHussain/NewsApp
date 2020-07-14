@@ -16,7 +16,7 @@ interface NewsApi {
 //        @Query("category")
 //        type :String = "entertainment",
         @Query("pageSize")
-        pageSize :Int = 40,
+        pageSize :Int = 20,
         @Query("apiKey")
         apikey : String = Constants.API_KEY
     ):Response<NewsResponse>
@@ -32,7 +32,7 @@ interface NewsApi {
 //        @Query("category")
 //        type :String = "entertainment",
         @Query("pageSize")
-        pageSize :Int = 40,
+        pageSize :Int = 20,
         @Query("apiKey")
         apikey : String = Constants.API_KEY
     ):Response<NewsResponse>
