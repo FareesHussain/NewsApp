@@ -2,11 +2,11 @@ package farees.hussain.newsapp.database
 
 import android.content.Context
 import androidx.room.*
-import farees.hussain.newsapp.models.Article
+import farees.hussain.newsapp.models.NewsArticle
 
 
 @Database(
-    entities = [Article::class],
+    entities = [NewsArticle::class],
     version = 1
 )
 @TypeConverters(Converters::class)
