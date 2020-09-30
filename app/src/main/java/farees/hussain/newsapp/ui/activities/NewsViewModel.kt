@@ -8,7 +8,7 @@ import android.net.NetworkCapabilities.*
 import android.os.Build
 import androidx.lifecycle.*
 import farees.hussain.newsapp.NewsApplication
-import farees.hussain.newsapp.models.Article
+import farees.hussain.newsapp.models.NewsArticle
 import farees.hussain.newsapp.models.NewsResponse
 import farees.hussain.newsapp.repository.NewsRepository
 import farees.hussain.newsapp.util.Resource
@@ -81,12 +81,12 @@ class NewsViewModel (
         return Resource.Error(response.message())
     }
 
-    fun saveArticle (article: Article) = viewModelScope.launch {
+    fun saveArticle (article: NewsArticle) = viewModelScope.launch {
         newsRepository.upsert(article)
     }
     fun getSavedNews() =
         newsRepository.getSavedNews()
-    fun deleteSavedNews(article: Article) = viewModelScope.launch {
+    fun deleteSavedNews(article: NewsArticle) = viewModelScope.launch {
         newsRepository.deleteArticle(article)
     }
 

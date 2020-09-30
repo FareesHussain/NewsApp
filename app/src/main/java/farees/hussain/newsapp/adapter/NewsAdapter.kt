@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import farees.hussain.newsapp.R
-import farees.hussain.newsapp.models.Article
+import farees.hussain.newsapp.models.NewsArticle
 import kotlinx.android.synthetic.main.item_article_preview.view.*
 
 class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     inner class ArticleViewHolder(itemView:View):RecyclerView.ViewHolder(itemView)
 
-    private val differCallback = object : DiffUtil.ItemCallback<Article>(){
-        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<NewsArticle>(){
+        override fun areItemsTheSame(oldItem: NewsArticle, newItem: NewsArticle): Boolean {
             return oldItem.url == newItem.url
         }
 
-        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
+        override fun areContentsTheSame(oldItem: NewsArticle, newItem: NewsArticle): Boolean {
             return oldItem == newItem
         }
     }
@@ -58,9 +58,9 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
         }
     }
 
-    private var onItemClickListener : ((Article)->Unit) ?= null
+    private var onItemClickListener : ((NewsArticle)->Unit) ?= null
 
-    fun setOnItemClickListener(listener: (Article) -> Unit){
+    fun setOnItemClickListener(listener: (NewsArticle) -> Unit){
         onItemClickListener = listener
     }
 }
